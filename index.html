@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kispesti Evangélikus Gyülekezet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Kispesti Evangélikus Gyülekezet</h1>
+      <p>Az Ige Gyülekezete</p>
+    </div>
+
+    <nav class="nav" id="myNav">
+      <div class="nav-links">
+        <a href="index.php" class="active">Nyitólap</a>
+        <a href="alkalmak.php">Alkalmak</a>
+        <a href="galeria.php">Galéria</a>
+        <a href="videok.php">Videók</a>
+        <a href="igehirdetesek.php">Igehirdetések</a>
+        <a href="hitvallas.php">Hitvallás</a>
+        <a href="napiige.php">Napi ige</a>
+        <a href="elerhetoseg.php">Elérhetőség</a>
+        <a href="esperesihivatal.php">Esperesi hivatal</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <section class="welcome">
+        <div class="welcome-container">
+          <div class="welcome-text">
+            <h2>Üdvözöljük gyülekezetünk honlapján!</h2>
+            <p>
+              Közösségünk nevét úgy lehetne mondani, hogy az "Ige Gyülekezete".
+              Ez nem azt jelenti, hogy tökéletesen ismerjük az Igét vagy más nem
+              érdekelne bennünket, de valamit igen. Azt, hogy Jézus Krisztus, a
+              mi Urunk az Ige által tanít, vezeti életünket. S ha szava élővé,
+              üzenetté válik, akkor szabadulást, örömöt és békességet kapunk.
+            </p>
+            <p>
+              Kívánjuk, hogy nyitott szívvel olvassa az Igét, engedjen
+              üzenetének; akkor boldog ember lesz. Várjuk közösségünkbe.
+            </p>
+          </div>
+          <div class="pastor-profile">
+            <img src="images/deak_laszlo.jpg" alt="Deák László lelkipásztor" />
+            <p><em>Deák László lelkipásztor</em></p>
+          </div>
+        </div>
+      </section>
+      <div class="live-stream">
+        <h3>Istentiszteletek élő közvetítése</h3>
+        <p>
+          Az istentiszteletek élő közvetítéseinek linkjeit gyülekezetünk
+          levelezőlistájára küldjük meg. A felvételek utólag megtekinthetők itt:
+        </p>
+        <div class="stream-links">
+          <a
+            href="https://www.youtube.com/playlist?list=PLMe6cEuU3-9QnlzEYfpbTmsJzve5dS7iC"
+            class="btn"
+            target="_blank"
+            >YouTube</a
+          >
+          <a
+            href="https://hu-hu.facebook.com/pages/Kispesti-Evang%C3%A9likus-Gy%C3%BClekezet/151717521552885"
+            class="btn"
+            target="_blank"
+            >Facebook</a
+          >
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Elérhetőség</h2>
+          <p><strong>Cím:</strong> 1196 Budapest, Templom tér 1.</p>
+          <p><strong>Bankszámlaszám:</strong><br />11719001-20251631</p>
+          <div class="donation">
+            <a href="https://perselypenz.lutheran.hu/" target="_blank">
+              E-persely
+            </a>
+            <button class="btn" onclick="showQR('perselypenz.lutheran.hu')">
+              QR kód
+            </button>
+          </div>
+        </div>
+
+        <div class="card calendar">
+          <div class="calendar-header">
+            <h3 class="calendar-title">2025. július</h3>
+            <div class="calendar-nav">
+              <button class="calendar-nav-btn" onclick="goToPrevMonth()">
+                &lt;&lt;
+              </button>
+              <button class="calendar-nav-btn" onclick="goToNextMonth()">
+                &gt;&gt;
+              </button>
+            </div>
+          </div>
+          <div class="calendar-events">
+            <div class="event-day">
+              <h4>július 3. csütörtök</h4>
+              <div class="event">
+                <span class="event-time">16:45:</span> Imaóra
+              </div>
+              <div class="event">
+                <span class="event-time">17:30:</span> Bibliaóra
+              </div>
+            </div>
+            <div class="event-day">
+              <h4>július 6. vasárnap</h4>
+              <div class="event">
+                <span class="event-time">08:00:</span> Istentisztelet
+                Wekerletelepen, ref. templom, úrvacsora
+              </div>
+              <div class="event">
+                <span class="event-time">10:00:</span> Istentisztelet, úrvacsora
+              </div>
+            </div>
+            <!-- További események -->
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Rendszeres alkalmak</h2>
+          <ul>
+            <li><a href="istentisztelet.php">Istentisztelet</a></li>
+            <li><a href="gyermekbibliakor.php">Gyermekbibliakör</a></li>
+            <li><a href="ifi.php">Ifi</a></li>
+            <li><a href="mirtusznoikor.php">Mirtusz női kör</a></li>
+            <li><a href="konfirmacio.php">Konfirmációs órák</a></li>
+            <li><a href="imakor.php">Imakör</a></li>
+            <li><a href="bibliaora.php">Bibliaóra</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Tudnivalók</h2>
+          <ul>
+            <li><a href="temetes.php">Temetési információk</a></li>
+            <li><a href="esketes.php">Esketési információk</a></li>
+            <li><a href="keresztelo.php">Keresztelési tudnivalók</a></li>
+            <li><a href="szmsz.php">SZMSZ</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Egyéb információk</h2>
+          <ul>
+            <li><a href="videok.php">Videók</a></li>
+            <li><a href="igehirdetesek.php">Igehirdetések (hangtár)</a></li>
+            <li><a href="hitvallas.php">Hitvallás</a></li>
+            <li><a href="galeria.php">Galéria</a></li>
+            <li><a href="tortenet.php">Gyülekezetünk története</a></li>
+            <li><a href="kapcsolodo.php">Kapcsolódó oldalak</a></li>
+            <li>
+              <a
+                href="https://hu-hu.facebook.com/pages/Kispesti-Evang%C3%A9likus-Gy%C3%BClekezet/151717521552885"
+                target="_blank"
+                >Facebook</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Kispesti Evangélikus Gyülekezet</p>
+        <div class="social-links">
+          <a
+            href="https://hu-hu.facebook.com/pages/Kispesti-Evang%C3%A9likus-Gy%C3%BClekezet/151717521552885"
+            class="social-link"
+            target="_blank"
+            ><i class="fa fa-facebook"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/playlist?list=PLMe6cEuU3-9QnlzEYfpbTmsJzve5dS7iC"
+            class="social-link"
+            target="_blank"
+            ><i class="fa fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function showQR(name) {
+        // QR kód megjelenítése
+        alert("QR kód megjelenítése: " + name);
+      }
+
+      function goToPrevMonth() {
+        // Előző hónap betöltése
+        console.log("Előző hónap betöltése");
+      }
+
+      function goToNextMonth() {
+        // Következő hónap betöltése
+        console.log("Következő hónap betöltése");
+      }
+    </script>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myNav");
+        if (x.className === "nav") {
+          x.className += " responsive";
+        } else {
+          x.className = "nav";
+        }
+      }
+    </script>
+  </body>
+</html>
