@@ -2,6 +2,7 @@
   --primary-color: #4a6da7;
   --secondary-color: #f8f8f8;
   --accent-color: #e67e22;
+  --accent-color-darker: #d35400;
   --text-color: #333;
   --light-text: #fff;
 }
@@ -112,7 +113,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #d35400;
+  background-color: var(--accent-color-darker);
 }
 
 .calendar {
@@ -227,6 +228,16 @@ footer {
 
 .live-stream {
   margin-bottom: 20px;
+  gap: 10px;
+}
+.stream-links {
+  display: flex;
+  gap: 10px;
+}
+.donation {
+  display: flex;
+  align-items: center; /* vertikális középre */
+  gap: 10px;
 }
 
 @media (max-width: 800px) {
