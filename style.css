@@ -87,6 +87,8 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 25px;
   transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -98,6 +100,25 @@ body {
   margin-top: 0;
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 10px;
+}
+
+.card-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(45%, -45%); /* kilógjon egy picit a card-ból */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.card-icon i {
+  transform: translate(-10px, 10px); /* jobbra 5px, fel 5px */
 }
 
 .btn {
