@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Igehirdetések - Kispesti Evangélikus Gyülekezet</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a6da7;
+        --secondary-color: #f8f8f8;
+        --accent-color: #e67e22;
+        --accent-color-darker: #d35400;
+        --text-color: #333;
+        --light-text: #fff;
+        --table-header: #3a5795;
+        --table-row-even: #f8f9fa;
+        --table-row-hover: #e9ecef;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --border-radius: 8px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.9) 100%
+          ),
+          url("https://kispest.lutheran.hu/images/kispest_templom_torony1.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-blend-mode: overlay;
+        padding-bottom: 40px;
+      }
+
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("https://kispest.lutheran.hu/images/kispest_templom_torony1.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--light-text);
+        padding: 0 20px;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin-bottom: 20px;
+      }
+
+      .nav {
+        background-color: var(--primary-color);
+        padding: 0 10px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        display: block;
+        color: var(--light-text);
+        text-align: center;
+        padding: 18px 16px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+        position: relative;
+      }
+
+      .nav a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .nav a.active {
+        background-color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--light-text);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .page-header h1 {
+        color: var(--primary-color);
+        font-size: 2rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        gap: 8px;
+      }
+
+      .btn:hover {
+        background-color: var(--accent-color-darker);
+      }
+
+      .btn-secondary {
+        background-color: var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: #3a5795;
+      }
+
+      .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .year-selector {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      .year-btn {
+        padding: 8px 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .year-btn:hover,
+      .year-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      .month-navigation {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .month-link {
+        padding: 8px 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        color: var(--text-color);
+        transition: all 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .month-link:hover {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      .sermon-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .sermon-table th {
+        background-color: var(--table-header);
+        color: white;
+        text-align: left;
+        padding: 15px;
+        font-weight: 600;
+      }
+
+      .sermon-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .sermon-table tr:nth-child(even) {
+        background-color: var(--table-row-even);
+      }
+
+      .sermon-table tr:hover {
+        background-color: var(--table-row-hover);
+      }
+
+      .action-icon {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        margin: 0 5px;
+        transition: color 0.3s;
+      }
+
+      .action-icon:hover {
+        color: var(--accent-color);
+      }
+
+      .search-form {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: var(--light-text);
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .social-links {
+        margin-top: 20px;
+      }
+
+      .social-link {
+        color: var(--light-text);
+        margin: 0 10px;
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          height: 250px;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .nav a {
+          padding: 12px 10px;
+          font-size: 0.9rem;
+        }
+
+        .sermon-table {
+          display: block;
+          overflow-x: auto;
+        }
+
+        .page-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .form-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          height: 200px;
+        }
+
+        .hero h1 {
+          font-size: 1.7rem;
+        }
+
+        .nav-links {
+          flex-direction: column;
+        }
+
+        .nav a {
+          padding: 10px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Kispesti Evangélikus Gyülekezet</h1>
+      <p>Az Ige Gyülekezete</p>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="index.php">Nyitólap</a>
+          <a href="alkalmak.php">Alkalmak</a>
+          <a href="galeria.php">Galéria</a>
+          <a href="videok.php">Videók</a>
+          <a href="igehirdetesek.php" class="active">Igehirdetések</a>
+          <a href="hitvallas.php">Hitvallás</a>
+          <a href="napiige.php">Napi ige</a>
+          <a href="elerhetoseg.php">Elérhetőség</a>
+          <a href="esperesihivatal.php">Esperesi hivatal</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="card">
+        <div class="page-header">
+          <h1>Igehirdetések</h1>
+          <button class="btn" onclick="showSearch()">
+            <i class="fas fa-search"></i> Keresés
+          </button>
+        </div>
+
+        <div class="filter-container">
+          <div class="year-selector">
+            <button class="year-btn">1992</button>
+            <button class="year-btn">1993</button>
+            <button class="year-btn">1995</button>
+            <button class="year-btn">1996</button>
+            <button class="year-btn">1997</button>
+            <button class="year-btn">1998</button>
+            <button class="year-btn">1999</button>
+            <button class="year-btn">2004</button>
+            <button class="year-btn">2005</button>
+            <button class="year-btn">2006</button>
+            <button class="year-btn">2007</button>
+            <button class="year-btn">2008</button>
+            <button class="year-btn">2009</button>
+            <button class="year-btn">2010</button>
+            <button class="year-btn">2011</button>
+            <button class="year-btn">2012</button>
+            <button class="year-btn">2013</button>
+            <button class="year-btn">2014</button>
+            <button class="year-btn">2015</button>
+            <button class="year-btn">2016</button>
+            <button class="year-btn">2017</button>
+            <button class="year-btn">2018</button>
+            <button class="year-btn">2019</button>
+            <button class="year-btn">2020</button>
+            <button class="year-btn">2021</button>
+            <button class="year-btn active">2022</button>
+            <button class="year-btn">2023</button>
+            <button class="year-btn">2024</button>
+            <button class="year-btn">2025</button>
+          </div>
+        </div>
+
+        <div class="month-navigation">
+          <a href="#" class="month-link">Január</a>
+          <a href="#" class="month-link">Február</a>
+          <a href="#" class="month-link">Március</a>
+          <a href="#" class="month-link">Április</a>
+          <a href="#" class="month-link">Május</a>
+          <a href="#" class="month-link">Június</a>
+          <a href="#" class="month-link">Július</a>
+          <a href="#" class="month-link">Augusztus</a>
+          <a href="#" class="month-link">Szeptember</a>
+          <a href="#" class="month-link">Október</a>
+          <a href="#" class="month-link">November</a>
+          <a href="#" class="month-link">December</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="sermon-table">
+            <thead>
+              <tr>
+                <th>Hallgat</th>
+                <th>Letölt</th>
+                <th>Időpont</th>
+                <th>Megjegyzés</th>
+                <th>Igehely</th>
+                <th>Igehirdető</th>
+                <th>Hossz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.01 10 óra</td>
+                <td>-</td>
+                <td>Jn 6,35-40</td>
+                <td>Deák László</td>
+                <td>18:11</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.02 10 óra</td>
+                <td>-</td>
+                <td>Ézs 63,7-14</td>
+                <td>Deák László</td>
+                <td>21:48</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.06 18 óra</td>
+                <td>-</td>
+                <td>Mt 2,1-12</td>
+                <td>Deák László</td>
+                <td>24:09</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.09 10 óra</td>
+                <td>-</td>
+                <td>Ef 5,11-17</td>
+                <td>Deák László</td>
+                <td>21:25</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.16 10 óra</td>
+                <td>-</td>
+                <td>Lk 10,1-3</td>
+                <td>Deák László</td>
+                <td>20:06</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.21 17 óra</td>
+                <td>-</td>
+                <td>Mt 2,2</td>
+                <td>Zuró József</td>
+                <td>22:50</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.23 10 óra</td>
+                <td>-</td>
+                <td>1Jn 3,10-12</td>
+                <td>Deák László</td>
+                <td>24:24</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="#" title="Hallgatás">
+                    <i class="fas fa-headphones action-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" title="Letöltés">
+                    <i class="fas fa-download action-icon"></i>
+                  </a>
+                </td>
+                <td>2022.01.30 10 óra</td>
+                <td>-</td>
+                <td>Kol 1,15-20</td>
+                <td>Deák László</td>
+                <td>23:32</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="month-navigation">
+          <a href="#" class="month-link">Január</a>
+          <a href="#" class="month-link">Február</a>
+          <a href="#" class="month-link">Március</a>
+          <a href="#" class="month-link">Április</a>
+          <a href="#" class="month-link">Május</a>
+          <a href="#" class="month-link">Június</a>
+          <a href="#" class="month-link">Július</a>
+          <a href="#" class="month-link">Augusztus</a>
+          <a href="#" class="month-link">Szeptember</a>
+          <a href="#" class="month-link">Október</a>
+          <a href="#" class="month-link">November</a>
+          <a href="#" class="month-link">December</a>
+        </div>
+      </div>
+
+      <div id="searchForm" class="search-form" style="display: none">
+        <h2 style="margin-bottom: 20px; color: var(--primary-color)">
+          Keresés
+        </h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="book">Igehely</label>
+            <select id="book" name="book">
+              <option value="">(-- bármely könyv --)</option>
+              <option value="1Móz">1 Mózes</option>
+              <option value="2Móz">2 Mózes</option>
+              <!-- További könyvek -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="chapter">Fejezet</label>
+            <select id="chapter" name="chapter">
+              <option value="0">(-- bármely fejezet --)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="year1">Év</label>
+            <div style="display: flex; gap: 10px">
+              <select id="year1" name="year1" style="flex: 1">
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <!-- További évek -->
+              </select>
+              <span style="line-height: 40px">–</span>
+              <select id="year2" name="year2" style="flex: 1">
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <!-- További évek -->
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="person">Igehirdető</label>
+            <select id="person" name="person">
+              <option value="">(-- bárki --)</option>
+              <option value="Deák László">Deák László</option>
+              <option value="Zuró József">Zuró József</option>
+              <!-- További személyek -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Megjegyzés</label>
+            <input
+              type="text"
+              id="comment"
+              name="comment"
+              placeholder="Keresett kifejezés..."
+            />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" onclick="hideSearch(true)">
+            <i class="fas fa-search"></i> Keresés
+          </button>
+          <button class="btn btn-secondary" onclick="hideSearch(false)">
+            <i class="fas fa-times"></i> Mégsem
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Kispesti Evangélikus Gyülekezet</p>
+        <div class="social-links">
+          <a
+            href="https://hu-hu.facebook.com/pages/Kispesti-Evang%C3%A9likus-Gy%C3%BClekezet/151717521552885"
+            class="social-link"
+            target="_blank"
+          >
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/playlist?list=PLMe6cEuU3-9QnlzEYfpbTmsJzve5dS7iC"
+            class="social-link"
+            target="_blank"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function showSearch() {
+        document.getElementById("searchForm").style.display = "block";
+        window.scrollTo({
+          top: document.getElementById("searchForm").offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+
+      function hideSearch(save) {
+        if (save) {
+          // Keresés végrehajtása
+          alert("Keresés végrehajtva");
+        }
+        document.getElementById("searchForm").style.display = "none";
+      }
+
+      // Év és hónap választók interaktivitása
+      document.querySelectorAll(".year-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".year-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          // Itt történne a szűrés az év szerint
+        });
+      });
+
+      document.querySelectorAll(".month-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Itt történne a görgetés a kiválasztott hónaphoz
+          alert("Görgetés a " + this.textContent + " hónaphoz");
+        });
+      });
+    </script>
+  </body>
+</html>

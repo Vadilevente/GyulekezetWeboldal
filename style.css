@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--secondary-color);
+  overflow-x: hidden;
 }
 
 .hero {
@@ -28,12 +29,11 @@ body {
   align-items: center;
   text-align: center;
   color: var(--light-text);
-  padding: 0 20px;
 }
 
 .hero h1 {
   font-family: "Playfair Display", serif;
-  font-size: 3rem;
+  font-size: clamp(1.3rem, 5vw, 3rem);
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -51,6 +51,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  transition: all 0.2s ease;
 }
 
 .nav a:hover {
@@ -75,7 +76,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
 }
@@ -238,13 +239,18 @@ footer {
   display: flex;
   align-items: center; /* vertikális középre */
   gap: 10px;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 800px) {
+.donation img {
+  width: 200px;
+  height: auto;
+}
+/* @media (max-width: 800px) {
   .hero h1 {
     font-size: 2rem;
   }
-}
+} */
 
 /* max-width needs to match */
 @media screen and (max-width: 1020px) {
