@@ -104,8 +104,8 @@ body {
 
 .card-icon {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0%;
+  right: 0%;
   transform: translate(45%, -45%); /* kilógjon egy picit a card-ból */
   width: 80px;
   height: 80px;
@@ -118,7 +118,7 @@ body {
   font-size: 24px;
 }
 .card-icon i {
-  transform: translate(-10px, 10px); /* jobbra 5px, fel 5px */
+  transform: translate(-15px, 15px); /* jobbra 5px, fel 5px */
 }
 
 .btn {
