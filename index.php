@@ -1,43 +1,4 @@
-<!DOCTYPE html>
-<html lang="hu">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kispesti Evangélikus Gyülekezet</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="hero">
-      <h1>Kispesti Evangélikus Gyülekezet</h1>
-      <p>Az Ige Gyülekezete</p>
-    </div>
-
-    <nav class="nav" id="myNav">
-      <div class="nav-links">
-        <a href="index.html" class="active">Nyitólap</a>
-        <a href="alkalmak.html">Alkalmak</a>
-        <a href="galeria.html">Galéria</a>
-        <a href="videok.html">Videók</a>
-        <a href="igehirdetesek.html">Igehirdetések</a>
-        <a href="hitvallas.html">Hitvallás</a>
-        <a href="napiige.html">Napi ige</a>
-        <a href="elerhetoseg.html">Elérhetőség</a>
-        <a href="esperesihivatal.html">Esperesi hivatal</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>
-    </nav>
+<?php include('header.php'); ?>
 
     <div class="container">
       <section class="welcome">
@@ -207,51 +168,4 @@
       </div>
     </div>
 
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2025 Kispesti Evangélikus Gyülekezet</p>
-        <div class="social-links">
-          <a
-            href="https://hu-hu.facebook.com/pages/Kispesti-Evang%C3%A9likus-Gy%C3%BClekezet/151717521552885"
-            class="social-link"
-            target="_blank"
-            ><i class="fab fa-facebook"></i
-          ></a>
-          <a
-            href="https://www.youtube.com/playlist?list=PLMe6cEuU3-9QnlzEYfpbTmsJzve5dS7iC"
-            class="social-link"
-            target="_blank"
-            ><i class="fab fa-youtube"></i
-          ></a>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      function showQR(name) {
-        // QR kód megjelenítése
-        alert("QR kód megjelenítése: " + name);
-      }
-
-      function goToPrevMonth() {
-        // Előző hónap betöltése
-        console.log("Előző hónap betöltése");
-      }
-
-      function goToNextMonth() {
-        // Következő hónap betöltése
-        console.log("Következő hónap betöltése");
-      }
-    </script>
-    <script>
-      function myFunction() {
-        var x = document.getElementById("myNav");
-        if (x.className === "nav") {
-          x.className += " responsive";
-        } else {
-          x.className = "nav";
-        }
-      }
-    </script>
-  </body>
-</html>
+<?php include('footer.php'); ?>
