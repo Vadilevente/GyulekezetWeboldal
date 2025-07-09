@@ -24,15 +24,15 @@
 
     <nav class="nav" id="myNav">
       <div class="nav-links">
-        <a href="index.php" class="active">Nyitólap</a>
-        <a href="alkalmak.php">Alkalmak</a>
-        <a href="galeria.php">Galéria</a>
-        <a href="videok.php">Videók</a>
-        <a href="igehirdetesek.php">Igehirdetések</a>
-        <a href="hitvallas.php">Hitvallás</a>
-        <a href="napiige.php">Napi ige</a>
-        <a href="elerhetoseg.php">Elérhetőség</a>
-        <a href="esperesihivatal.php">Esperesi hivatal</a>
+        <a href="index.html" class="active">Nyitólap</a>
+        <a href="alkalmak.html">Alkalmak</a>
+        <a href="galeria.html">Galéria</a>
+        <a href="videok.html">Videók</a>
+        <a href="igehirdetesek.html">Igehirdetések</a>
+        <a href="hitvallas.html">Hitvallás</a>
+        <a href="napiige.html">Napi ige</a>
+        <a href="elerhetoseg.html">Elérhetőség</a>
+        <a href="esperesihivatal.html">Esperesi hivatal</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
@@ -86,7 +86,10 @@
 
       <div class="grid">
         <div class="card">
-          <h2>Elérhetőség</h2>
+          <div class="card-header">
+            <i class="fa-solid fa-phone"></i>
+            <h2>Elérhetőség</h2>
+          </div>
           <p>
             <i class="fa fa-phone"></i><strong> Telefon:</strong> 06-20-366-5790
           </p>
@@ -117,17 +120,16 @@
           </div>
         </div>
 
-        <div class="card calenda">
-          <div class="calendar-header">
-            <h2 class="calendar-title">2025. július</h2>
-            <div class="calendar-nav">
-              <button class="calendar-nav-btn" onclick="goToPrevMonth()">
-                &lt;&lt;
-              </button>
-              <button class="calendar-nav-btn" onclick="goToNextMonth()">
-                &gt;&gt;
-              </button>
-            </div>
+        <div class="card">
+          <div class="card-header">
+            <i class="fa-solid fa-calendar"></i>
+            <h2>2025. július</h2>
+            <button class="btn calendar-nav-btn" onclick="goToPrevMonth()">
+              &lt;&lt;
+            </button>
+            <button class="btn calendar-nav-btn" onclick="goToNextMonth()">
+              &gt;&gt;
+            </button>
           </div>
           <div class="calendar-events">
             <div class="event-day">
@@ -155,7 +157,10 @@
 
       <div class="grid">
         <div class="card">
-          <h2>Rendszeres alkalmak</h2>
+          <div class="card-header">
+            <i class="fa-solid fa-people-group"></i>
+            <h2>Rendszeres alkalmak</h2>
+          </div>
           <ul>
             <li><a href="istentisztelet.php">Istentisztelet</a></li>
             <li><a href="gyermekbibliakor.php">Gyermekbibliakör</a></li>
@@ -165,24 +170,31 @@
             <li><a href="imakor.php">Imakör</a></li>
             <li><a href="bibliaora.php">Bibliaóra</a></li>
           </ul>
+          <a
+            href="https://www.youtube.com/playlist?list=PLMe6cEuU3-9QnlzEYfpbTmsJzve5dS7iC"
+            class="btn"
+            target="_blank"
+            >Tovább <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
         <div class="card">
-          <h2>Tudnivalók</h2>
+          <div class="card-header">
+            <i class="fa-solid fa-church"></i>
+            <h2>Kazuális szolgálatok</h2>
+          </div>
           <ul>
             <li><a href="temetes.php">Temetési információk</a></li>
             <li><a href="esketes.php">Esketési információk</a></li>
             <li><a href="keresztelo.php">Keresztelési tudnivalók</a></li>
-            <li><a href="szmsz.php">SZMSZ</a></li>
           </ul>
         </div>
 
         <div class="card">
-          <div class="card-icon">
+          <div class="card-header">
             <i class="fa-solid fa-info"></i>
+            <h2>Egyéb információk</h2>
           </div>
-
-          <h2>Egyéb információk</h2>
           <ul>
             <li><a href="videok.php">Videók</a></li>
             <li><a href="igehirdetesek.php">Igehirdetések (hangtár)</a></li>

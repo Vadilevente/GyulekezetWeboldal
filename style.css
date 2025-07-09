@@ -1,8 +1,9 @@
 :root {
-  --primary-color: #4a6da7;
-  --secondary-color: #f8f8f8;
-  --accent-color: #e67e22;
-  --accent-color-darker: #d35400;
+  --primary-color: #606c38;
+  --primary-color-darker: #283618;
+  --secondary-color: #f3f3f3;
+  --accent-color: #dda15e;
+  --accent-color-darker: #bc6c25;
   --text-color: #333;
   --light-text: #fff;
 }
@@ -15,6 +16,9 @@ body {
   padding: 0;
   background-color: var(--secondary-color);
   overflow-x: hidden;
+}
+a {
+  color: var(--accent-color);
 }
 
 .hero {
@@ -55,7 +59,7 @@ body {
 }
 
 .nav a:hover {
-  background-color: #ddd;
+  background-color: var(--accent-color);
   color: black;
 }
 
@@ -91,22 +95,26 @@ body {
   overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card-header {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: solid 2px var(--primary-color);
 }
 
 .card h2 {
+  padding-left: 10px;
   color: var(--primary-color);
   margin-top: 0;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 10px;
+  margin-bottom: 2px;
 }
-
-.card-icon {
+.card-header i {
   position: absolute;
   top: 0%;
-  right: 0%;
-  transform: translate(45%, -45%); /* kilógjon egy picit a card-ból */
+  left: 0%;
+  transform: translate(-45%, -45%); /* kilógjon egy picit a card-ból */
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -117,8 +125,9 @@ body {
   align-items: center;
   font-size: 24px;
 }
-.card-icon i {
-  transform: translate(-15px, 15px); /* jobbra 5px, fel 5px */
+
+.card-header i::before {
+  transform: translate(12px, 12px); /* például kicsit feljebb tolod */
 }
 
 .btn {
@@ -137,25 +146,8 @@ body {
 .btn:hover {
   background-color: var(--accent-color-darker);
 }
-
-.calendar {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.calendar-title {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin: 0;
+.calendar * {
+  padding: 0px;
 }
 
 .calendar-nav {
@@ -164,12 +156,9 @@ body {
 }
 
 .calendar-nav-btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
+  /* background-color: var(--primary-color); */
   padding: 5px 10px;
-  cursor: pointer;
+  margin-left: 5px;
 }
 
 .event-day {
@@ -188,7 +177,7 @@ body {
 
 .event-time {
   font-weight: bold;
-  color: var(--accent-color);
+  color: var(--primary-color-darker);
 }
 
 footer {
